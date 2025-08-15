@@ -1,3 +1,6 @@
+// API 키를 여기에 입력하세요
+const OPENAI_API_KEY = 'your-openai-api-key-here';
+
 const form = document.getElementById('sajuForm');
 const loading = document.getElementById('loading');
 const resultSection = document.getElementById('resultSection');
@@ -24,13 +27,13 @@ function calculateSaju(year, month, day, hour){
   return { year: yearStem + yearBranch, month: monthStem + monthBranch, day: dayStem + dayBranch, time: timeStem + timeBranch };
 }
 
-async function analyzeSaju(gender, year, month, day, hour, apiKey){
+async function analyzeSaju(gender, year, month, day, hour){
   const saju = calculateSaju(year, month, day, hour);
   try{
     const response = await fetch('/api/analyze-saju', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ gender, year, month, day, hour, saju, apiKey })
+      body: JSON.stringify({ gender, year, month, day, hour, saju, apiKey: OPENAI_API_KEY })
     });
     if (response.ok){
       const result = await response.json();
@@ -66,7 +69,6 @@ form.addEventListener('submit', async (e)=>{
   const month = parseInt(document.getElementById('month').value, 10);
   const day = parseInt(document.getElementById('day').value, 10);
   const hour = parseInt(document.getElementById('hour').value, 10);
-  const apiKey = document.getElementById('apiKey').value.trim();
 
   if(!gender || Number.isNaN(year) || Number.isNaN(month) || Number.isNaN(day) || Number.isNaN(hour)){
     showError('생년월일시 정보를 모두 정확히 입력해주세요.');
@@ -79,7 +81,7 @@ form.addEventListener('submit', async (e)=>{
   errorMessage.style.display = 'none';
 
   try{
-    const result = await analyzeSaju(gender, year, month, day, hour, apiKey);
+    const result = await analyzeSaju(gender, year, month, day, hour);
     document.getElementById('yearPillar').textContent = result.saju.year;
     document.getElementById('monthPillar').textContent = result.saju.month;
     document.getElementById('dayPillar').textContent = result.saju.day;
