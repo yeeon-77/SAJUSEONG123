@@ -30,7 +30,7 @@ async function analyzeSaju(gender, year, month, day, hour, apiKey){
     const response = await fetch('/api/analyze-saju', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ gender, year, month, day, hour, saju, hostInfo })
+      body: JSON.stringify({ gender, year, month, day, hour, saju, apiKey })
     });
     if (response.ok){
       const result = await response.json();
@@ -66,7 +66,7 @@ form.addEventListener('submit', async (e)=>{
   const month = parseInt(document.getElementById('month').value, 10);
   const day = parseInt(document.getElementById('day').value, 10);
   const hour = parseInt(document.getElementById('hour').value, 10);
-  const hostInfo = document.getElementById('hostInfo').value.trim();
+  const apiKey = document.getElementById('apiKey').value.trim();
 
   if(!gender || Number.isNaN(year) || Number.isNaN(month) || Number.isNaN(day) || Number.isNaN(hour)){
     showError('생년월일시 정보를 모두 정확히 입력해주세요.');
@@ -79,7 +79,7 @@ form.addEventListener('submit', async (e)=>{
   errorMessage.style.display = 'none';
 
   try{
-    const result = await analyzeSaju(gender, year, month, day, hour, hostInfo);
+    const result = await analyzeSaju(gender, year, month, day, hour, apiKey);
     document.getElementById('yearPillar').textContent = result.saju.year;
     document.getElementById('monthPillar').textContent = result.saju.month;
     document.getElementById('dayPillar').textContent = result.saju.day;
