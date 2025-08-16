@@ -26,13 +26,18 @@ input:focus, select:focus { outline: none; border-color: #ff6b9d; box-shadow: 0 
 .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #ff6b9d; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 0 auto 20px; }
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-.result-section { padding: 40px; background: #f8f9fa; border-top: 1px solid #eee; display: none; }
+/* 메인 컨텐츠 영역 */
+.main-content { max-width: 1000px; margin: 0 auto; padding: 40px; background: #f8f9fa; }
+
 .user-greeting { text-align: center; margin-bottom: 30px; padding: 20px; background: linear-gradient(135deg, #ff9a9e, #fecfef); border-radius: 15px; color: #fff; font-size: 1.3em; font-weight: bold; }
 
 .saju-pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px; }
 .pillar { background: #fff; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,.1); }
 .pillar h3 { color: #333; margin-bottom: 10px; font-size: 1.1em; }
 .pillar-content { font-size: 1.5em; font-weight: bold; color: #ff6b9d; }
+
+/* 탭 안내 메시지 */
+.tab-notice { text-align: center; margin-bottom: 20px; padding: 15px; background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 10px; color: #856404; }
 
 /* 메인 탭 스타일 */
 .main-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; border-bottom: 2px solid #eee; }

@@ -550,20 +550,26 @@ form.addEventListener('submit', async (e) => {
 
   analyzeBtn.disabled = true;
   loading.style.display = 'block';
-  resultSection.style.display = 'none';
   errorMessage.style.display = 'none';
 
   try {
     const saju = calculateSaju(year, month, day, hour);
     
     // 사주 표시
+    document.getElementById('sajuPillars').style.display = 'grid';
     document.getElementById('yearPillar').textContent = saju.year;
     document.getElementById('monthPillar').textContent = saju.month;
     document.getElementById('dayPillar').textContent = saju.day;
     document.getElementById('timePillar').textContent = saju.time;
     
     // 사용자 인사말
+    document.getElementById('userGreeting').style.display = 'block';
     document.getElementById('userGreeting').textContent = `💖 ${name}님의 사주 분석 💖`;
+    
+    // 탭 안내 메시지 숨기기
+    document.querySelectorAll('.tab-notice').forEach(notice => {
+      notice.style.display = 'none';
+    });
     
     // 각 탭별 분석 실행
     const basicResult = await analyzeBasicPersonality(name, gender, saju);
@@ -583,10 +589,6 @@ form.addEventListener('submit', async (e) => {
     
     // 로딩 숨기고 결과 표시
     loading.style.display = 'none';
-    resultSection.style.display = 'block';
-    
-    // 결과 섹션으로 스크롤
-    resultSection.scrollIntoView({ behavior: 'smooth' });
     
   } catch (err) {
     console.error('분석 오류:', err);
