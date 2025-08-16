@@ -40,7 +40,16 @@ input:focus, select:focus { outline: none; border-color: #ff6b9d; box-shadow: 0 
 .tab-notice { text-align: center; margin-bottom: 20px; padding: 15px; background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 10px; color: #856404; }
 
 /* 메인 탭 스타일 */
-.main-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; border-bottom: 2px solid #eee; }
+.main-tabs { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 10px; 
+  margin: 0 auto; 
+  max-width: 1000px; 
+  padding: 20px 40px 0; 
+  border-bottom: 2px solid #eee; 
+  background: #f8f9fa; 
+}
 .main-tab-btn { flex: 1; min-width: 120px; padding: 15px 20px; border: none; background: #f8f9fa; color: #666; border-radius: 10px 10px 0 0; cursor: pointer; transition: all .3s ease; font-weight: bold; font-size: 16px; }
 .main-tab-btn.active { background: #ff6b9d; color: #fff; }
 .main-tab-btn:hover:not(.active) { background: #ffe0e6; color: #ff6b9d; }
