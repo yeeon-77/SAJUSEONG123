@@ -1,7 +1,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Arial', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
-.container { max-width: 800px; margin: 0 auto; background: rgba(255, 255, 255, 0.95); border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,.1); overflow: hidden; }
-.header { background: linear-gradient(135deg, #ff6b6b, #feca57); color: #fff; text-align: center; padding: 30px; }
+body { font-family: 'Arial', sans-serif; background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%); min-height: 100vh; padding: 20px; }
+.container { max-width: 900px; margin: 0 auto; background: rgba(255, 255, 255, 0.95); border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,.1); overflow: hidden; }
+.header { background: linear-gradient(135deg, #ff6b9d, #c44569); color: #fff; text-align: center; padding: 30px; }
 .header h1 { font-size: 2.5em; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,.3); }
 .header p { font-size: 1.1em; opacity: .9; }
 .input-section { padding: 40px; background: #fff; }
@@ -10,20 +10,52 @@ body { font-family: 'Arial', sans-serif; background: linear-gradient(135deg, #66
 .form-row { display: flex; gap: 15px; flex-wrap: wrap; }
 .form-row > div { flex: 1; min-width: 120px; }
 input, select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 10px; font-size: 16px; transition: all .3s ease; }
-input:focus, select:focus { outline: none; border-color: #667eea; box-shadow: 0 0 10px rgba(102,126,234,.2); }
-.analyze-btn { width: 100%; background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; border: none; padding: 15px; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; transition: all .3s ease; margin-top: 20px; }
+input:focus, select:focus { outline: none; border-color: #ff6b9d; box-shadow: 0 0 10px rgba(255,107,157,.2); }
+
+.time-unknown-container { margin-bottom: 15px; }
+.checkbox-label { display: flex; align-items: center; cursor: pointer; font-size: 14px; color: #666; }
+.checkbox-label input[type="checkbox"] { margin-right: 8px; }
+.checkmark { width: 18px; height: 18px; border: 2px solid #ddd; border-radius: 4px; margin-right: 8px; position: relative; transition: all .3s ease; }
+.checkbox-label input[type="checkbox"]:checked + .checkmark { background: #ff6b9d; border-color: #ff6b9d; }
+.checkbox-label input[type="checkbox"]:checked + .checkmark:after { content: '✓'; position: absolute; top: -2px; left: 2px; color: white; font-size: 12px; }
+
+.analyze-btn { width: 100%; background: linear-gradient(135deg, #ff6b9d, #c44569); color: #fff; border: none; padding: 15px; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; transition: all .3s ease; margin-top: 20px; }
 .analyze-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,.2); }
 .analyze-btn:disabled { background: #ccc; cursor: not-allowed; transform: none; }
 .loading { text-align: center; padding: 40px; display: none; }
-.spinner { border: 4px solid #f3f3f3; border-top: 4px solid #667eea; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 0 auto 20px; }
+.spinner { border: 4px solid #f3f3f3; border-top: 4px solid #ff6b9d; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 0 auto 20px; }
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
 .result-section { padding: 40px; background: #f8f9fa; border-top: 1px solid #eee; display: none; }
+.user-greeting { text-align: center; margin-bottom: 30px; padding: 20px; background: linear-gradient(135deg, #ff9a9e, #fecfef); border-radius: 15px; color: #fff; font-size: 1.3em; font-weight: bold; }
+
 .saju-pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px; }
 .pillar { background: #fff; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,.1); }
 .pillar h3 { color: #333; margin-bottom: 10px; font-size: 1.1em; }
-.pillar-content { font-size: 1.5em; font-weight: bold; color: #667eea; }
-.analysis-result { background: #fff; border-radius: 15px; padding: 30px; box-shadow: 0 5px 15px rgba(0,0,0,.1); }
-.analysis-result h2 { color: #333; margin-bottom: 20px; font-size: 1.8em; text-align: center; }
+.pillar-content { font-size: 1.5em; font-weight: bold; color: #ff6b9d; }
+
+.fortune-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+.tab-btn { flex: 1; min-width: 120px; padding: 12px 20px; border: 2px solid #ff6b9d; background: #fff; color: #ff6b9d; border-radius: 25px; cursor: pointer; transition: all .3s ease; font-weight: bold; }
+.tab-btn.active, .tab-btn:hover { background: #ff6b9d; color: #fff; }
+
+.tab-content { display: none; background: #fff; border-radius: 15px; padding: 30px; box-shadow: 0 5px 15px rgba(0,0,0,.1); }
+.tab-content.active { display: block; }
+.tab-content h2 { color: #333; margin-bottom: 20px; font-size: 1.8em; text-align: center; }
 .analysis-content { line-height: 1.8; color: #555; font-size: 1.1em; }
+
+.compatibility-form { background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 20px; }
+.compatibility-form h3 { margin-bottom: 15px; color: #333; }
+
+.mind-reading-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px; }
+.mind-btn { padding: 15px; background: linear-gradient(135deg, #ffeaa7, #fab1a0); border: none; border-radius: 10px; cursor: pointer; transition: all .3s ease; font-weight: bold; color: #333; }
+.mind-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,.2); }
+
 .error-message { background: #ff6b6b; color: #fff; padding: 15px; border-radius: 10px; margin-top: 20px; display: none; }
-@media (max-width: 600px) { .form-row { flex-direction: column; } .header h1 { font-size: 2em; } .input-section, .result-section { padding: 20px; } }
+
+@media (max-width: 600px) { 
+  .form-row { flex-direction: column; } 
+  .header h1 { font-size: 2em; } 
+  .input-section, .result-section { padding: 20px; }
+  .fortune-tabs { flex-direction: column; }
+  .mind-reading-options { grid-template-columns: 1fr; }
+}
