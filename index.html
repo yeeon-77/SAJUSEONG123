@@ -88,14 +88,14 @@
           </div>
         </div>
 
-        <button type="submit" class="analyze-btn" id="analyzeBtn">💖 연애운 분석하기</button>
+        <button type="submit" class="analyze-btn" id="analyzeBtn">💖 사주 분석하기</button>
       </form>
       <div class="error-message" id="errorMessage"></div>
     </div>
 
     <div class="loading" id="loading">
       <div class="spinner"></div>
-      <p>AI가 당신의 연애운을 분석하고 있습니다...</p>
+      <p>AI가 당신의 사주를 분석하고 있습니다...</p>
     </div>
 
     <div class="result-section" id="resultSection">
@@ -108,32 +108,83 @@
         <div class="pillar"><h3>시주 (時柱)</h3><div class="pillar-content" id="timePillar">-</div></div>
       </div>
 
-      <div class="fortune-tabs">
-        <button class="tab-btn active" data-tab="daily">오늘의 연애운</button>
-        <button class="tab-btn" data-tab="monthly">이달의 연애운</button>
-        <button class="tab-btn" data-tab="yearly">올해의 연애운</button>
-        <button class="tab-btn" data-tab="compatibility">궁합 분석</button>
-        <button class="tab-btn" data-tab="mind">마음 읽기</button>
+      <div class="main-tabs">
+        <button class="main-tab-btn active" data-tab="mysaju">내사주</button>
+        <button class="main-tab-btn" data-tab="lovefortune">연애운</button>
+        <button class="main-tab-btn" data-tab="compatibility">궁합</button>
+        <button class="main-tab-btn" data-tab="premium">프리미엄 사주</button>
       </div>
 
-      <div class="tab-content active" id="daily">
-        <h2>💝 오늘의 연애운</h2>
-        <div class="analysis-content" id="dailyContent">분석 결과가 여기에 표시됩니다.</div>
+      <!-- 내사주 탭 -->
+      <div class="main-tab-content active" id="mysaju">
+        <div class="sub-tabs">
+          <button class="sub-tab-btn active" data-subtab="basic">기본 성격</button>
+          <button class="sub-tab-btn" data-subtab="career">직업운</button>
+          <button class="sub-tab-btn" data-subtab="health">건강운</button>
+          <button class="sub-tab-btn" data-subtab="wealth">재물운</button>
+        </div>
+        
+        <div class="sub-tab-content active" id="basic">
+          <h2>🌟 기본 성격 분석</h2>
+          <div class="analysis-content" id="basicContent">분석 결과가 여기에 표시됩니다.</div>
+        </div>
+        
+        <div class="sub-tab-content" id="career">
+          <h2>💼 직업운 분석</h2>
+          <div class="analysis-content" id="careerContent">분석 결과가 여기에 표시됩니다.</div>
+        </div>
+        
+        <div class="sub-tab-content" id="health">
+          <h2>🏥 건강운 분석</h2>
+          <div class="analysis-content" id="healthContent">분석 결과가 여기에 표시됩니다.</div>
+        </div>
+        
+        <div class="sub-tab-content" id="wealth">
+          <h2>💰 재물운 분석</h2>
+          <div class="analysis-content" id="wealthContent">분석 결과가 여기에 표시됩니다.</div>
+        </div>
       </div>
 
-      <div class="tab-content" id="monthly">
-        <h2>🌙 이달의 연애운</h2>
-        <div class="analysis-content" id="monthlyContent">분석 결과가 여기에 표시됩니다.</div>
+      <!-- 연애운 탭 -->
+      <div class="main-tab-content" id="lovefortune">
+        <div class="sub-tabs">
+          <button class="sub-tab-btn active" data-subtab="daily">오늘의 연애운</button>
+          <button class="sub-tab-btn" data-subtab="monthly">이달의 연애운</button>
+          <button class="sub-tab-btn" data-subtab="yearly">올해의 연애운</button>
+          <button class="sub-tab-btn" data-subtab="mindreading">마음 읽기</button>
+        </div>
+
+        <div class="sub-tab-content active" id="daily">
+          <h2>💝 오늘의 연애운</h2>
+          <div class="analysis-content" id="dailyContent">분석 결과가 여기에 표시됩니다.</div>
+        </div>
+
+        <div class="sub-tab-content" id="monthly">
+          <h2>🌙 이달의 연애운</h2>
+          <div class="analysis-content" id="monthlyContent">분석 결과가 여기에 표시됩니다.</div>
+        </div>
+
+        <div class="sub-tab-content" id="yearly">
+          <h2>⭐ 올해의 연애운</h2>
+          <div class="analysis-content" id="yearlyContent">분석 결과가 여기에 표시됩니다.</div>
+        </div>
+
+        <div class="sub-tab-content" id="mindreading">
+          <h2>💭 마음 읽기</h2>
+          <div class="mind-reading-options">
+            <button class="mind-btn" data-type="thinking">💭 그 사람 내 생각할까?</button>
+            <button class="mind-btn" data-type="feelings">💝 그 사람의 속마음은?</button>
+            <button class="mind-btn" data-type="future">🔮 우리의 미래는?</button>
+            <button class="mind-btn" data-type="contact">📱 연락이 올까?</button>
+          </div>
+          <div class="analysis-content" id="mindContent">궁금한 내용을 선택해보세요.</div>
+        </div>
       </div>
 
-      <div class="tab-content" id="yearly">
-        <h2>⭐ 올해의 연애운</h2>
-        <div class="analysis-content" id="yearlyContent">분석 결과가 여기에 표시됩니다.</div>
-      </div>
-
-      <div class="tab-content" id="compatibility">
-        <h2>💑 궁합 분석</h2>
+      <!-- 궁합 탭 -->
+      <div class="main-tab-content" id="compatibility">
         <div class="compatibility-form">
+          <h2>💑 궁합 분석</h2>
           <h3>상대방 정보 입력</h3>
           <div class="form-row">
             <div>
@@ -172,19 +223,69 @@
               <input type="number" id="partnerDay" placeholder="일" min="1" max="31" />
             </div>
           </div>
+          <div class="time-unknown-container">
+            <label class="checkbox-label">
+              <input type="checkbox" id="partnerTimeUnknown" />
+              <span class="checkmark"></span>
+              상대방 태어난 시간을 모름
+            </label>
+          </div>
+          <div class="form-row" id="partnerTimeSelect">
+            <div>
+              <select id="partnerHour">
+                <option value="">시</option>
+                <option value="23">자시 (23-01)</option>
+                <option value="1">축시 (01-03)</option>
+                <option value="3">인시 (03-05)</option>
+                <option value="5">묘시 (05-07)</option>
+                <option value="7">진시 (07-09)</option>
+                <option value="9">사시 (09-11)</option>
+                <option value="11">오시 (11-13)</option>
+                <option value="13">미시 (13-15)</option>
+                <option value="15">신시 (15-17)</option>
+                <option value="17">유시 (17-19)</option>
+                <option value="19">술시 (19-21)</option>
+                <option value="21">해시 (21-23)</option>
+              </select>
+            </div>
+          </div>
           <button type="button" class="analyze-btn" id="compatibilityBtn">💕 궁합 분석하기</button>
         </div>
         <div class="analysis-content" id="compatibilityContent">상대방 정보를 입력하고 궁합을 분석해보세요.</div>
       </div>
 
-      <div class="tab-content" id="mind">
-        <h2>💭 마음 읽기</h2>
-        <div class="mind-reading-options">
-          <button class="mind-btn" data-type="thinking">💭 그 사람 내 생각할까?</button>
-          <button class="mind-btn" data-type="feelings">💝 그 사람의 속마음은?</button>
-          <button class="mind-btn" data-type="future">🔮 우리의 미래는?</button>
+      <!-- 프리미엄 사주 탭 -->
+      <div class="main-tab-content" id="premium">
+        <div class="premium-notice">
+          <h2>✨ 프리미엄 사주 분석</h2>
+          <p>더 정확하고 상세한 분석을 원하시나요?</p>
         </div>
-        <div class="analysis-content" id="mindContent">궁금한 내용을 선택해보세요.</div>
+        
+        <div class="premium-features">
+          <div class="premium-item">
+            <h3>🔮 전문가 수준 분석</h3>
+            <p>30년 경력 사주 전문가 수준의 정밀한 분석</p>
+          </div>
+          <div class="premium-item">
+            <h3>📊 상세 운세 차트</h3>
+            <p>월별, 연도별 상세 운세 그래프와 분석</p>
+          </div>
+          <div class="premium-item">
+            <h3>💎 맞춤형 조언</h3>
+            <p>개인별 맞춤 개선 방안 및 행운의 방향 제시</p>
+          </div>
+          <div class="premium-item">
+            <h3>🎯 정확도 95%</h3>
+            <p>AI와 전문가 검증을 통한 높은 정확도</p>
+          </div>
+        </div>
+        
+        <div class="premium-cta">
+          <button class="premium-btn" onclick="alert('프리미엄 서비스는 준비 중입니다!')">
+            ⭐ 프리미엄 분석 받기 (₩9,900)
+          </button>
+          <p class="premium-desc">7일 무료 체험 후 월 9,900원</p>
+        </div>
       </div>
     </div>
   </div>
