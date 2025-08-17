@@ -886,6 +886,23 @@ document.addEventListener('DOMContentLoaded', function() {
       
       this.classList.add('active');
       document.getElementById(targetTab).classList.add('active');
+      
+      // 사주 기둥과 인사말은 내사주 탭에서만 표시
+      const sajuPillars = document.getElementById('sajuPillars');
+      const userGreeting = document.getElementById('userGreeting');
+      
+      if (targetTab === 'mysaju') {
+        // 내사주 탭에서는 저장된 정보가 있으면 사주 기둥 표시
+        const savedUser = localStorage.getItem('sajuUser');
+        if (savedUser) {
+          sajuPillars.style.display = 'grid';
+          userGreeting.style.display = 'block';
+        }
+      } else {
+        // 다른 탭에서는 사주 기둥과 인사말 숨김
+        sajuPillars.style.display = 'none';
+        userGreeting.style.display = 'none';
+      }
     });
   });
   
@@ -1104,7 +1121,7 @@ form.addEventListener('submit', async (e) => {
   try {
     const saju = calculateSaju(year, month, day, hour);
     
-    // 사주 표시
+    // 사주 표시 (내사주 탭에서만)
     document.getElementById('sajuPillars').style.display = 'grid';
     document.getElementById('yearPillar').textContent = saju.year;
     document.getElementById('monthPillar').textContent = saju.month;
