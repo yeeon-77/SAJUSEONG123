@@ -269,35 +269,98 @@
 
     <!-- 프리미엄 사주 탭 -->
     <div class="main-tab-content" id="premium">
-      <div class="premium-notice">
-        <h2>✨ 프리미엄 사주 분석</h2>
-        <p>더 정확하고 상세한 분석을 원하시나요?</p>
+      <div class="saved-info-notice" id="premiumNotice">
+        <p>💡 먼저 '내사주' 탭에서 개인 정보를 입력해주세요</p>
       </div>
       
-      <div class="premium-features">
-        <div class="premium-item">
-          <h3>🔮 전문가 수준 분석</h3>
-          <p>30년 경력 사주 전문가 수준의 정밀한 분석</p>
+      <!-- 결제 전 화면 -->
+      <div class="premium-payment-section" id="premiumPayment">
+        <div class="premium-notice">
+          <h2>✨ 프리미엄 연애 사주 분석</h2>
+          <p>더 깊이 있고 구체적인 연애 분석을 원하시나요?</p>
         </div>
-        <div class="premium-item">
-          <h3>📊 상세 운세 차트</h3>
-          <p>월별, 연도별 상세 운세 그래프와 분석</p>
+        
+        <div class="premium-features">
+          <div class="premium-item">
+            <h3>💕 그 사람과의 미래</h3>
+            <p>좋아하는 사람과 어떻게 될지 상세한 미래 예측</p>
+          </div>
+          <div class="premium-item">
+            <h3>💭 마음 속 깊은 곳</h3>
+            <p>그 사람이 나를 어떻게 생각하는지 심층 분석</p>
+          </div>
+          <div class="premium-item">
+            <h3>💒 결혼운과 이상형</h3>
+            <p>언제 결혼할지, 어떤 사람과 결혼할지 상세 분석</p>
+          </div>
+          <div class="premium-item">
+            <h3>🎯 연애 성공 전략</h3>
+            <p>개인 맞춤형 연애 성공 로드맵 제시</p>
+          </div>
+          <div class="premium-item">
+            <h3>💎 운명의 상대</h3>
+            <p>나와 가장 잘 맞는 이상형의 특징과 만날 시기</p>
+          </div>
+          <div class="premium-item">
+            <h3>🔮 연애 타이밍</h3>
+            <p>고백, 프로포즈 등 중요한 순간의 최적 타이밍</p>
+          </div>
         </div>
-        <div class="premium-item">
-          <h3>💎 맞춤형 조언</h3>
-          <p>개인별 맞춤 개선 방안 및 행운의 방향 제시</p>
-        </div>
-        <div class="premium-item">
-          <h3>🎯 정확도 95%</h3>
-          <p>AI와 전문가 검증을 통한 높은 정확도</p>
+        
+        <div class="premium-cta">
+          <button class="premium-btn" id="premiumPayBtn">
+            ⭐ 프리미엄 분석 받기 (₩19,900)
+          </button>
+          <p class="premium-desc">한 번 결제로 평생 이용 가능</p>
         </div>
       </div>
       
-      <div class="premium-cta">
-        <button class="premium-btn" onclick="alert('프리미엄 서비스는 준비 중입니다!')">
-          ⭐ 프리미엄 분석 받기 (₩9,900)
-        </button>
-        <p class="premium-desc">7일 무료 체험 후 월 9,900원</p>
+      <!-- 결제 후 프리미엄 컨텐츠 -->
+      <div class="premium-content-section" id="premiumContent" style="display: none;">
+        <div class="sub-tabs">
+          <button class="sub-tab-btn active" data-subtab="future">그 사람과의 미래</button>
+          <button class="sub-tab-btn" data-subtab="thinking">그 사람 마음</button>
+          <button class="sub-tab-btn" data-subtab="marriage">결혼운</button>
+          <button class="sub-tab-btn" data-subtab="strategy">연애 전략</button>
+          <button class="sub-tab-btn" data-subtab="soulmate">운명의 상대</button>
+          <button class="sub-tab-btn" data-subtab="timing">연애 타이밍</button>
+        </div>
+        
+        <div class="sub-tab-content active" id="future">
+          <h2>💕 그 사람과의 미래</h2>
+          <button class="analyze-btn" id="futureAnalyzeBtn" style="display: none;">💕 미래 분석하기</button>
+          <div class="analysis-content" id="futureContent">먼저 '내사주' 탭에서 개인 정보를 입력해주세요.</div>
+        </div>
+        
+        <div class="sub-tab-content" id="thinking">
+          <h2>💭 그 사람의 진짜 마음</h2>
+          <button class="analyze-btn" id="thinkingAnalyzeBtn" style="display: none;">💭 마음 분석하기</button>
+          <div class="analysis-content" id="thinkingContent">먼저 '내사주' 탭에서 개인 정보를 입력해주세요.</div>
+        </div>
+        
+        <div class="sub-tab-content" id="marriage">
+          <h2>💒 결혼운과 이상형</h2>
+          <button class="analyze-btn" id="marriageAnalyzeBtn" style="display: none;">💒 결혼운 분석하기</button>
+          <div class="analysis-content" id="marriageContent">먼저 '내사주' 탭에서 개인 정보를 입력해주세요.</div>
+        </div>
+        
+        <div class="sub-tab-content" id="strategy">
+          <h2>🎯 맞춤 연애 전략</h2>
+          <button class="analyze-btn" id="strategyAnalyzeBtn" style="display: none;">🎯 전략 분석하기</button>
+          <div class="analysis-content" id="strategyContent">먼저 '내사주' 탭에서 개인 정보를 입력해주세요.</div>
+        </div>
+        
+        <div class="sub-tab-content" id="soulmate">
+          <h2>💎 운명의 상대</h2>
+          <button class="analyze-btn" id="soulmateAnalyzeBtn" style="display: none;">💎 운명의 상대 분석하기</button>
+          <div class="analysis-content" id="soulmateContent">먼저 '내사주' 탭에서 개인 정보를 입력해주세요.</div>
+        </div>
+        
+        <div class="sub-tab-content" id="timing">
+          <h2>🔮 연애 타이밍</h2>
+          <button class="analyze-btn" id="timingAnalyzeBtn" style="display: none;">🔮 타이밍 분석하기</button>
+          <div class="analysis-content" id="timingContent">먼저 '내사주' 탭에서 개인 정보를 입력해주세요.</div>
+        </div>
       </div>
     </div>
   </div>

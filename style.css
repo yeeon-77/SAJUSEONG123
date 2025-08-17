@@ -94,6 +94,11 @@ input:focus, select:focus { outline: none; border-color: #ff6b9d; box-shadow: 0 
 .premium-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(102,126,234,.3); }
 .premium-desc { margin-top: 10px; color: #666; font-size: 14px; }
 
+/* 프리미엄 결제 후 컨텐츠 */
+.premium-payment-section { display: block; }
+.premium-content-section { display: none; }
+.premium-content-section.active { display: block; }
+
 .error-message { background: #ff6b6b; color: #fff; padding: 15px; border-radius: 10px; margin-top: 20px; display: none; }
 
 @media (max-width: 768px) { 
