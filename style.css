@@ -4,7 +4,6 @@ body { font-family: 'Arial', sans-serif; background: linear-gradient(135deg, #ff
 .header { background: linear-gradient(135deg, #ff6b9d, #c44569); color: #fff; text-align: center; padding: 30px; }
 .header h1 { font-size: 2.5em; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,.3); }
 .header p { font-size: 1.1em; opacity: .9; }
-.input-section { padding: 40px; background: #fff; }
 .form-group { margin-bottom: 20px; }
 .form-group label { display: block; margin-bottom: 8px; font-weight: bold; color: #333; }
 .form-row { display: flex; gap: 15px; flex-wrap: wrap; }
@@ -38,6 +37,12 @@ input:focus, select:focus { outline: none; border-color: #ff6b9d; box-shadow: 0 
 
 /* 탭 안내 메시지 */
 .tab-notice { text-align: center; margin-bottom: 20px; padding: 15px; background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 10px; color: #856404; }
+
+/* 저장된 정보 안내 메시지 */
+.saved-info-notice { text-align: center; margin-bottom: 20px; padding: 15px; background: #d1ecf1; border: 1px solid #bee5eb; border-radius: 10px; color: #0c5460; }
+
+/* 내사주 탭의 입력 섹션 */
+.main-tab-content .input-section { padding: 30px; background: #f8f9fa; border-radius: 15px; margin-bottom: 20px; }
 
 /* 메인 탭 스타일 */
 .main-tabs { 

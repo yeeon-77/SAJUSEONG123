@@ -21,87 +21,6 @@
       <button class="main-tab-btn" data-tab="premium">프리미엄 사주</button>
     </div>
 
-    <div class="input-section">
-      <form id="sajuForm">
-        <div class="form-group">
-          <label>이름</label>
-          <input type="text" id="name" placeholder="이름을 입력하세요" required />
-        </div>
-
-        <div class="form-group">
-          <label>성별</label>
-          <select id="gender" required>
-            <option value="">선택하세요</option>
-            <option value="male">남성</option>
-            <option value="female">여성</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>생년월일</label>
-          <div class="form-row">
-            <div>
-              <input type="number" id="year" placeholder="연도 (예: 1990)" min="1900" max="2030" required />
-            </div>
-            <div>
-              <select id="month" required>
-                <option value="">월</option>
-                <option value="1">1월</option>
-                <option value="2">2월</option>
-                <option value="3">3월</option>
-                <option value="4">4월</option>
-                <option value="5">5월</option>
-                <option value="6">6월</option>
-                <option value="7">7월</option>
-                <option value="8">8월</option>
-                <option value="9">9월</option>
-                <option value="10">10월</option>
-                <option value="11">11월</option>
-                <option value="12">12월</option>
-              </select>
-            </div>
-            <div>
-              <input type="number" id="day" placeholder="일" min="1" max="31" required />
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>태어난 시간</label>
-          <div class="time-unknown-container">
-            <label class="checkbox-label">
-              <input type="checkbox" id="timeUnknown" />
-              <span class="checkmark"></span>
-              태어난 시간을 모름
-            </label>
-          </div>
-          <div class="form-row" id="timeSelect">
-            <div>
-              <select id="hour">
-                <option value="">시</option>
-                <option value="23">자시 (23-01)</option>
-                <option value="1">축시 (01-03)</option>
-                <option value="3">인시 (03-05)</option>
-                <option value="5">묘시 (05-07)</option>
-                <option value="7">진시 (07-09)</option>
-                <option value="9">사시 (09-11)</option>
-                <option value="11">오시 (11-13)</option>
-                <option value="13">미시 (13-15)</option>
-                <option value="15">신시 (15-17)</option>
-                <option value="17">유시 (17-19)</option>
-                <option value="19">술시 (19-21)</option>
-                <option value="21">해시 (21-23)</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <button type="submit" class="analyze-btn" id="analyzeBtn">💖 사주 분석하기</button>
-      </form>
-      <div class="error-message" id="errorMessage"></div>
-    </div>
-  </div>
-
   <!-- 메인 컨텐츠 영역 -->
   <div class="main-content">
     <div class="loading" id="loading">
@@ -120,9 +39,86 @@
 
     <!-- 내사주 탭 -->
     <div class="main-tab-content active" id="mysaju">
-      <div class="tab-notice">
-        <p>💡 개인 정보를 입력하고 분석하기 버튼을 눌러주세요</p>
+      <div class="input-section">
+        <form id="sajuForm">
+          <div class="form-group">
+            <label>이름</label>
+            <input type="text" id="name" placeholder="이름을 입력하세요" required />
+          </div>
+
+          <div class="form-group">
+            <label>성별</label>
+            <select id="gender" required>
+              <option value="">선택하세요</option>
+              <option value="male">남성</option>
+              <option value="female">여성</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>생년월일</label>
+            <div class="form-row">
+              <div>
+                <input type="number" id="year" placeholder="연도 (예: 1990)" min="1900" max="2030" required />
+              </div>
+              <div>
+                <select id="month" required>
+                  <option value="">월</option>
+                  <option value="1">1월</option>
+                  <option value="2">2월</option>
+                  <option value="3">3월</option>
+                  <option value="4">4월</option>
+                  <option value="5">5월</option>
+                  <option value="6">6월</option>
+                  <option value="7">7월</option>
+                  <option value="8">8월</option>
+                  <option value="9">9월</option>
+                  <option value="10">10월</option>
+                  <option value="11">11월</option>
+                  <option value="12">12월</option>
+                </select>
+              </div>
+              <div>
+                <input type="number" id="day" placeholder="일" min="1" max="31" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>태어난 시간</label>
+            <div class="time-unknown-container">
+              <label class="checkbox-label">
+                <input type="checkbox" id="timeUnknown" />
+                <span class="checkmark"></span>
+                태어난 시간을 모름
+              </label>
+            </div>
+            <div class="form-row" id="timeSelect">
+              <div>
+                <select id="hour">
+                  <option value="">시</option>
+                  <option value="23">자시 (23-01)</option>
+                  <option value="1">축시 (01-03)</option>
+                  <option value="3">인시 (03-05)</option>
+                  <option value="5">묘시 (05-07)</option>
+                  <option value="7">진시 (07-09)</option>
+                  <option value="9">사시 (09-11)</option>
+                  <option value="11">오시 (11-13)</option>
+                  <option value="13">미시 (13-15)</option>
+                  <option value="15">신시 (15-17)</option>
+                  <option value="17">유시 (17-19)</option>
+                  <option value="19">술시 (19-21)</option>
+                  <option value="21">해시 (21-23)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="analyze-btn" id="analyzeBtn">💖 사주 분석하기</button>
+        </form>
+        <div class="error-message" id="errorMessage"></div>
       </div>
+      
       <div class="sub-tabs">
         <button class="sub-tab-btn active" data-subtab="basic">기본 성격</button>
         <button class="sub-tab-btn" data-subtab="career">직업운</button>
@@ -153,9 +149,10 @@
 
     <!-- 연애운 탭 -->
     <div class="main-tab-content" id="lovefortune">
-      <div class="tab-notice">
-        <p>💡 개인 정보를 입력하고 분석하기 버튼을 눌러주세요</p>
+      <div class="saved-info-notice" id="loveFortuneNotice">
+        <p>💡 먼저 '내사주' 탭에서 개인 정보를 입력해주세요</p>
       </div>
+      
       <div class="sub-tabs">
         <button class="sub-tab-btn active" data-subtab="daily">오늘의 연애운</button>
         <button class="sub-tab-btn" data-subtab="monthly">이달의 연애운</button>
@@ -165,17 +162,20 @@
 
       <div class="sub-tab-content active" id="daily">
         <h2>💝 오늘의 연애운</h2>
-        <div class="analysis-content" id="dailyContent">개인 정보를 입력하고 분석하기 버튼을 눌러주세요.</div>
+        <button class="analyze-btn" id="dailyAnalyzeBtn" style="display: none;">💝 오늘의 연애운 분석하기</button>
+        <div class="analysis-content" id="dailyContent">먼저 '내사주' 탭에서 개인 정보를 입력해주세요.</div>
       </div>
 
       <div class="sub-tab-content" id="monthly">
         <h2>🌙 이달의 연애운</h2>
-        <div class="analysis-content" id="monthlyContent">개인 정보를 입력하고 분석하기 버튼을 눌러주세요.</div>
+        <button class="analyze-btn" id="monthlyAnalyzeBtn" style="display: none;">🌙 이달의 연애운 분석하기</button>
+        <div class="analysis-content" id="monthlyContent">먼저 '내사주' 탭에서 개인 정보를 입력해주세요.</div>
       </div>
 
       <div class="sub-tab-content" id="yearly">
         <h2>⭐ 올해의 연애운</h2>
-        <div class="analysis-content" id="yearlyContent">개인 정보를 입력하고 분석하기 버튼을 눌러주세요.</div>
+        <button class="analyze-btn" id="yearlyAnalyzeBtn" style="display: none;">⭐ 올해의 연애운 분석하기</button>
+        <div class="analysis-content" id="yearlyContent">먼저 '내사주' 탭에서 개인 정보를 입력해주세요.</div>
       </div>
 
       <div class="sub-tab-content" id="mindreading">
@@ -186,12 +186,16 @@
           <button class="mind-btn" data-type="future">🔮 우리의 미래는?</button>
           <button class="mind-btn" data-type="contact">📱 연락이 올까?</button>
         </div>
-        <div class="analysis-content" id="mindContent">개인 정보를 입력한 후 궁금한 내용을 선택해보세요.</div>
+        <div class="analysis-content" id="mindContent">먼저 '내사주' 탭에서 개인 정보를 입력해주세요.</div>
       </div>
     </div>
 
     <!-- 궁합 탭 -->
     <div class="main-tab-content" id="compatibility">
+      <div class="saved-info-notice" id="compatibilityNotice">
+        <p>💡 먼저 '내사주' 탭에서 개인 정보를 입력해주세요</p>
+      </div>
+      
       <div class="compatibility-form">
         <h2>💑 궁합 분석</h2>
         <h3>상대방 정보 입력</h3>

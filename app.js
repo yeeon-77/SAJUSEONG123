@@ -32,6 +32,36 @@ function loadUserInfo() {
       timeUnknownCheckbox.checked = true;
       timeSelect.style.display = 'none';
     }
+    
+    // 저장된 정보가 있으면 다른 탭들 활성화
+    updateTabsBasedOnUserInfo(user);
+  }
+}
+
+// 사용자 정보에 따라 탭 상태 업데이트
+function updateTabsBasedOnUserInfo(user) {
+  if (user && user.name && user.gender && user.year && user.month && user.day) {
+    // 연애운 탭 활성화
+    const loveFortuneNotice = document.getElementById('loveFortuneNotice');
+    if (loveFortuneNotice) {
+      loveFortuneNotice.innerHTML = `<p>💖 ${user.name}님의 연애운을 확인해보세요!</p>`;
+    }
+    
+    // 궁합 탭 활성화
+    const compatibilityNotice = document.getElementById('compatibilityNotice');
+    if (compatibilityNotice) {
+      compatibilityNotice.innerHTML = `<p>💕 ${user.name}님의 궁합을 분석해보세요!</p>`;
+    }
+    
+    // 연애운 분석 버튼들 표시
+    document.getElementById('dailyAnalyzeBtn').style.display = 'block';
+    document.getElementById('monthlyAnalyzeBtn').style.display = 'block';
+    document.getElementById('yearlyAnalyzeBtn').style.display = 'block';
+    
+    // 마음 읽기 버튼들 활성화
+    document.querySelectorAll('.mind-btn').forEach(btn => {
+      btn.disabled = false;
+    });
   }
 }
 
@@ -39,6 +69,7 @@ function loadUserInfo() {
 function saveUserInfo(name, gender, year, month, day, hour) {
   const userInfo = { name, gender, year, month, day, hour };
   localStorage.setItem('sajuUser', JSON.stringify(userInfo));
+  updateTabsBasedOnUserInfo(userInfo);
 }
 
 // 태어난 시간 모름 체크박스 이벤트
@@ -503,7 +534,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const savedUser = JSON.parse(localStorage.getItem('sajuUser'));
       
       if (!savedUser) {
-        showError('먼저 본인의 정보를 입력해주세요.');
+        showError('먼저 "내사주" 탭에서 개인 정보를 입력해주세요.');
         return;
       }
       
@@ -523,7 +554,45 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+  
+  // 연애운 분석 버튼들
+  document.getElementById('dailyAnalyzeBtn').addEventListener('click', async function() {
+    await analyzeLoveFortuneByType('daily', this, 'dailyContent');
+  });
+  
+  document.getElementById('monthlyAnalyzeBtn').addEventListener('click', async function() {
+    await analyzeLoveFortuneByType('monthly', this, 'monthlyContent');
+  });
+  
+  document.getElementById('yearlyAnalyzeBtn').addEventListener('click', async function() {
+    await analyzeLoveFortuneByType('yearly', this, 'yearlyContent');
+  });
 });
+
+// 연애운 분석 함수
+async function analyzeLoveFortuneByType(type, button, contentId) {
+  const savedUser = JSON.parse(localStorage.getItem('sajuUser'));
+  
+  if (!savedUser) {
+    showError('먼저 "내사주" 탭에서 개인 정보를 입력해주세요.');
+    return;
+  }
+  
+  button.disabled = true;
+  const originalText = button.textContent;
+  button.textContent = '분석 중...';
+  
+  try {
+    const saju = calculateSaju(savedUser.year, savedUser.month, savedUser.day, savedUser.hour);
+    const result = await analyzeLoveFortune(savedUser.name, savedUser.gender, saju, type);
+    document.getElementById(contentId).innerHTML = result.replace(/\n/g, '<br>');
+  } catch (error) {
+    showError('연애운 분석 중 오류가 발생했습니다.');
+  } finally {
+    button.disabled = false;
+    button.textContent = originalText;
+  }
+}
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -566,26 +635,12 @@ form.addEventListener('submit', async (e) => {
     document.getElementById('userGreeting').style.display = 'block';
     document.getElementById('userGreeting').textContent = `💖 ${name}님의 사주 분석 💖`;
     
-    // 탭 안내 메시지 숨기기
-    document.querySelectorAll('.tab-notice').forEach(notice => {
-      notice.style.display = 'none';
-    });
-    
-    // 각 탭별 분석 실행
+    // 내사주 분석 실행
     const basicResult = await analyzeBasicPersonality(name, gender, saju);
     document.getElementById('basicContent').innerHTML = basicResult.replace(/\n/g, '<br>');
     
     const careerResult = await analyzeCareer(name, gender, saju);
     document.getElementById('careerContent').innerHTML = careerResult.replace(/\n/g, '<br>');
-    
-    const dailyResult = await analyzeLoveFortune(name, gender, saju, 'daily');
-    document.getElementById('dailyContent').innerHTML = dailyResult.replace(/\n/g, '<br>');
-    
-    const monthlyResult = await analyzeLoveFortune(name, gender, saju, 'monthly');
-    document.getElementById('monthlyContent').innerHTML = monthlyResult.replace(/\n/g, '<br>');
-    
-    const yearlyResult = await analyzeLoveFortune(name, gender, saju, 'yearly');
-    document.getElementById('yearlyContent').innerHTML = yearlyResult.replace(/\n/g, '<br>');
     
     // 로딩 숨기고 결과 표시
     loading.style.display = 'none';
