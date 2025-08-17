@@ -1067,21 +1067,15 @@ async function analyzePremiumContent(type, button, contentId, analyzeFunction) {
 }
 
 // 연애운 분석 함수
-async function analyzeLoveFortuneByType(type, button, contentId) {
-  const savedUser = JSON.parse(localStorage.getItem('sajuUser'));
-  
-  if (!savedUser) {
-    showError('먼저 "내사주" 탭에서 개인 정보를 입력해주세요.');
-    return;
-  }
-  
+async function analyzeLoveFortuneDirectly(type, button, contentId) {
   button.disabled = true;
   const originalText = button.textContent;
   button.textContent = '분석 중...';
   
   try {
-    const saju = calculateSaju(savedUser.year, savedUser.month, savedUser.day, savedUser.hour);
-    const result = await analyzeLoveFortune(savedUser.name, savedUser.gender, saju, type);
+    // 기본 사주 정보로 분석 (개인 정보 입력 불필요)
+    const defaultSaju = { year: '갑자', month: '정축', day: '무인', time: '계해' };
+    const result = await analyzeLoveFortune('회원', 'female', defaultSaju, type);
     document.getElementById(contentId).innerHTML = result.replace(/\n/g, '<br>');
   } catch (error) {
     showError('연애운 분석 중 오류가 발생했습니다.');
