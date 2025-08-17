@@ -985,15 +985,15 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // 연애운 분석 버튼들
   document.getElementById('dailyAnalyzeBtn').addEventListener('click', async function() {
-    await analyzeLoveFortuneByType('daily', this, 'dailyContent');
+    await analyzeLoveFortuneDirectly('daily', this, 'dailyContent');
   });
   
   document.getElementById('monthlyAnalyzeBtn').addEventListener('click', async function() {
-    await analyzeLoveFortuneByType('monthly', this, 'monthlyContent');
+    await analyzeLoveFortuneDirectly('monthly', this, 'monthlyContent');
   });
   
   document.getElementById('yearlyAnalyzeBtn').addEventListener('click', async function() {
-    await analyzeLoveFortuneByType('yearly', this, 'yearlyContent');
+    await analyzeLoveFortuneDirectly('yearly', this, 'yearlyContent');
   });
   
   // 프리미엄 결제 버튼
