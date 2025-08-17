@@ -44,11 +44,9 @@ input:focus, select:focus { outline: none; border-color: #ff6b9d; box-shadow: 0 
   display: flex; 
   flex-wrap: wrap; 
   gap: 10px; 
-  margin: 0 auto; 
-  max-width: 1000px; 
-  padding: 20px 40px 0; 
+  padding: 20px 40px; 
   border-bottom: 2px solid #eee; 
-  background: #f8f9fa; 
+  background: #fff; 
 }
 .main-tab-btn { flex: 1; min-width: 120px; padding: 15px 20px; border: none; background: #f8f9fa; color: #666; border-radius: 10px 10px 0 0; cursor: pointer; transition: all .3s ease; font-weight: bold; font-size: 16px; }
 .main-tab-btn.active { background: #ff6b9d; color: #fff; }
